@@ -1,53 +1,36 @@
 import 'package:flutter/material.dart';
 
+class MyButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        print('MyButton was tapped!');
+      },
+      child: Container(
+        height: 50.0,
+        padding: const EdgeInsets.all(8.0),
+        margin: const EdgeInsets.symmetric(horizontal: 8.0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5.0),
+          color: Colors.lightGreen[500],
+        ),
+        child: Center(
+          child: Text('Engage'),
+        ),
+      ),
+    );
+  }
+}
+
 void main() {
-  runApp(SampleApp());
-}
-
-class SampleApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Sample App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+  runApp(
+    MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: MyButton(),
+        ),
       ),
-      home: SampleAppPage(),
-    );
-  }
-}
-
-class SampleAppPage extends StatefulWidget {
-  SampleAppPage({Key key}) : super(key: key);
-
-  @override
-  _SampleAppPageState createState() => _SampleAppPageState();
-}
-
-class _SampleAppPageState extends State<SampleAppPage> {
-  // Default placeholder text
-  String textToShow = "I Like Flutter";
-
-  void _updateText() {
-    setState(() {
-      // update the text
-      textToShow = "Flutter is Awesome!";
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Sample App"),
-      ),
-      body: Center(child: Text(textToShow)),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _updateText,
-        tooltip: 'Update Text',
-        child: Icon(Icons.update),
-      ),
-    );
-  }
+    ),
+  );
 }
